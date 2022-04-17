@@ -27,9 +27,4 @@ public class Member {
     // 따라서 여기에 값을 넣는다고해서 Orders테이블에 FK값이 변경되지않는다
     private List<Order> orders = new ArrayList<>();
 
-
-
-
-
-
 }

@@ -28,4 +28,9 @@ public class ItemService {  // 단순하게 itemRepository에게 위임만 하�
         return itemRepository.findOne(itemId);
     }
 
+    public void updateItem(Long id, String name, int price) {
+        Item item = itemRepository.findOne(id);
+        item.setName(name);
+        item.setPrice(price);
+    }
 }

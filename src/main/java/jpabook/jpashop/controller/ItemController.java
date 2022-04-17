@@ -62,19 +62,22 @@ public class ItemController {
         return "items/updateItemForm";
     }
 
+    /**
+     * 영속성 컨텍스트가 자동 변경
+     */
+//    변경 감지 기능을 사용하면 원하는 속성만 선택해서 변경할 수 있지만, 병합을 사용하면 모든 속성이
+//    변경된다. 병합시 값이 없으면 null 로 업데이트 할 위험도 있다. (병합은 모든 필드를 교체한다.)
     @PostMapping("items/{itemId}/edit")
     public String updateItem(@ModelAttribute("form") BookForm form) {
-
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-
-        itemService.save(book);
+        itemService.updateItem(form.getId(), form.getName(), form.getPrice());
+//        Book book = new Book();
+//        book.setId(form.getId());
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+//        itemService.save(book);
         return "redirect:/items";
-
     }
 }
